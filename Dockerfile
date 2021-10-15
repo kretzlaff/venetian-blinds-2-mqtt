@@ -1,4 +1,4 @@
-FROM arm64v8/python:3.10-slim
+FROM arm32v7/python:3.10-slim
 
 COPY . /app
 WORKDIR /app
