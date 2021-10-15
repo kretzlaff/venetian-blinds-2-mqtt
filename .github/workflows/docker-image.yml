@@ -23,3 +23,6 @@ jobs:
         arch: armv7
         distro: ubuntu18.04
         run: docker build . --file Dockerfile --tag keretzlaff/venetian-blinds-2-mqtt:$(date +%s)
+    - name: Get the output
+      run: |
+        echo "Done"
