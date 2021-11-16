@@ -1,10 +1,12 @@
-FROM arm32v7/python:3.10-slim
+FROM python:3.10-slim-buster
 
 COPY . /app
 WORKDIR /app
 
-RUN pip install pipenv --no-cache-dir && \
-    pipenv install --system --deploy && \
-    pip uninstall -y pipenv virtualenv-clone virtualenv
+RUN apt-get update && apt-get install gcc -y
+
+RUN pip install pipenv --no-cache-dir
+RUN pipenv install --system --deploy
+RUN pip uninstall -y pipenv virtualenv-clone virtualenv
 
 CMD ["python", "mqttblinds.py"]
